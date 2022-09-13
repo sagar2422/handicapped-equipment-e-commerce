@@ -1,0 +1,52 @@
+{
+	"products": [
+		{
+			"id": 1,
+			"name": "Wheelchair",
+			"price": 4000,
+			"description": "lorem ipsum dolor sit amet, consectetur...."
+		},
+		{
+			"id": 2,
+			"name": "Something",
+			"price": 44000,
+			"description": "lorem ipsum dolor sit amet, consectetur...."
+		},
+		{
+			"id": 3,
+			"name": "Wheelchair",
+			"price": 40040,
+			"description": "lorem ipsum dolor sit amet, consectetur...."
+		},
+		{
+			"id": 4,
+			"name": "Something",
+			"price": 5000,
+			"description": "lorem ipsum dolor sit amet, consectetur...."
+		},
+		{
+			"id": 5,
+			"price": 2000,
+			"name": "Wheelchair",
+			"description": "lorem ipsum dolor sit amet, consectetur...."
+		},
+		{
+			"id": 6,
+			"price": 1000,
+			"name": "Something",
+			"description": "lorem ipsum dolor sit amet, consectetur...."
+		},
+		{
+			"id": 7,
+			"price": 3000,
+			"name": "Wheelchair",
+			"description": "lorem ipsum dolor sit amet, consectetur...."
+		},
+		{
+			"id": 8,
+			"price": 40003,
+			"name": "Something",
+			"description": "lorem ipsum dolor sit amet, consectetur...."
+		}
+	]
+}

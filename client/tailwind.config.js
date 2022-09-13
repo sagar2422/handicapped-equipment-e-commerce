@@ -10,7 +10,12 @@ module.exports = {
       'light-purple': '#E7E5FA',
       'grey' : '#646464'
     },
+    fontFamily: {
+      sans: ['Roboto', 'sans-serif'],
+    },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')({ nocompatible: true }),
+  ],
 }
