@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { FaRegUser, FaRegHeart, FaShoppingBag } from 'react-icons/fa';
+import { FaRegUser, FaRegHeart, FaShoppingBag, FaHome } from 'react-icons/fa';
 
 function Navbar() {
 	return (
@@ -16,6 +16,11 @@ function Navbar() {
 						type='text'
 						placeholder='Search'
 					/>
+				</li>
+				<li className='p-2 hover:text-dark-purple/50 transition hover:-translate-y-1 hover:scale-105'>
+					<NavLink to='/'>
+						<FaHome size={30} />
+					</NavLink>
 				</li>
 				<li className='p-2 hover:text-dark-purple/50 transition hover:-translate-y-1 hover:scale-105'>
 					<NavLink to='/user'>
