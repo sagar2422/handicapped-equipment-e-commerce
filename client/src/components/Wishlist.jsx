@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react';
 
 function Wishlist() {
-        return(
-            <h1>Wishlist Page</h1>
-        )
+	return <h1 className='m-10'>Wishlist Page</h1>;
 }
 
 export default Wishlist;

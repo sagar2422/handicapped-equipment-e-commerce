@@ -2,99 +2,31 @@
     "categories": [
         {
             "id":1,
-            "name":"Hands"
+            "name":"Wheelchairs"
         },
         {
             "id":2,
-            "name":"Legs"
+            "name":"Support Items"
         },
         {
             "id":3,
-            "name":"Ears"
+            "name":"Hearing Aids"
         },
         {
             "id":4,
-            "name":"Eyes"
+            "name":"Visual Aids"
         },
         {
             "id":5,
-            "name":"Hands"
+            "name":"Hand Aids"
         },
         {
             "id":6,
-            "name":"Legs"
+            "name":"Leg Aids"
         },
         {
             "id":7,
-            "name":"Ears"
-        },
-        {
-            "id":8,
-            "name":"Eyes"
-        },
-        {
-            "id":9,
-            "name":"Hands"
-        },
-        {
-            "id":10,
-            "name":"Legs"
-        },
-        {
-            "id":11,
-            "name":"Ears"
-        },
-        {
-            "id":12,
-            "name":"Eyes"
-        },
-        {
-            "id":13,
-            "name":"Hands"
-        },
-        {
-            "id":14,
-            "name":"Legs"
-        },
-        {
-            "id":15,
-            "name":"Ears"
-        },
-        {
-            "id":16,
-            "name":"Eyes"
-        },
-        {
-            "id":17,
-            "name":"Hands"
-        },
-        {
-            "id":18,
-            "name":"Legs"
-        },
-        {
-            "id":19,
-            "name":"Ears"
-        },
-        {
-            "id":20,
-            "name":"Eyes"
-        },
-        {
-            "id":21,
-            "name":"Hands"
-        },
-        {
-            "id":22,
-            "name":"Legs"
-        },
-        {
-            "id":23,
-            "name":"Ears"
-        },
-        {
-            "id":24,
-            "name":"Eyes"
+            "name":"Body Support Items"
         }
 
     ]

@@ -16,7 +16,7 @@ function Product() {
 				<div className='flex flex-col items-center justify-center'>
 					<img
 						className='rounded-md md:w-9/12'
-						src='/product.svg'
+						src={product.image}
 						alt='product'
 					/>
 					<div className='m-4 grid grid-cols-2'>
@@ -72,32 +72,7 @@ function Product() {
 						<h3 className='text-xl font-semibold'>About Item</h3>
 						<hr className='border-t-4 mt-2 text-dark-purple/50' />
 						<p className='text-grey p-4'>
-							Lorem ipsum dolor sit amet, consectetur adipiscing
-							elit. Sed fermentum erat at purus iaculis auctor.
-							Lorem ipsum dolor sit amet, consectetur adipiscing
-							elit. Vivamus vestibulum faucibus placerat. Vivamus
-							nec facilisis neque. <br /> Nulla viverra mauris id
-							purus condimentum gravida. Vestibulum a porta est.
-							Cras sit amet ultricies justo, ac feugiat ligula.
-							Fusce lobortis et diam at condimentum. Nulla gravida
-							aliquet ex a sodales. <br /> Sed id ultrices tellus,
-							ac interdum lectus. Fusce in porttitor sapien.
-							Mauris pharetra, sem in pulvinar congue, tellus
-							massa ullamcorper mi, eget molestie elit tellus quis
-							odio. Curabitur venenatis neque id orci elementum
-							sodales. <br />
-							Praesent viverra neque vitae arcu fermentum mattis.
-							Curabitur a viverra tortor, vitae molestie nisi.
-							Pellentesque habitant morbi tristique senectus et
-							netus et malesuada fames ac turpis egestas. Fusce in
-							porttitor sapien. <br /> Mauris pharetra, sem in
-							pulvinar congue, tellus massa ullamcorper mi, eget
-							molestie elit tellus quis odio. Curabitur venenatis
-							neque id orci elementum sodales. Praesent viverra
-							neque vitae arcu fermentum mattis. <br /> Curabitur
-							a viverra tortor, vitae molestie nisi. Pellentesque
-							habitant morbi tristique senectus et netus et
-							malesuada fames ac turpis egestas.
+							{product.about}
 						</p>
 					</div>
 				</div>

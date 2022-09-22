@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { FaRegUser, FaRegHeart, FaShoppingBag, FaHome } from 'react-icons/fa';
+import { FaRegUser, FaRegHeart, FaShoppingBag, FaHome, FaDonate } from 'react-icons/fa';
 
 function Navbar() {
 	return (
 		<nav className='flex flex-col md:flex-row justify-between px-6 py-6 md:px-10  '>
 			<h1 className='font-bold flex items-center transition hover:-translate-y-1 hover:scale-105 hover:text-dark-purple'>
-				<Link to='/'>DripChair</Link>
+				<Link to='/'>MedUnit</Link>
 			</h1>
 			<ul className='flex flex-row items-center text-dark-purple'>
 				<li className='p-2 transition hover:-translate-y-1 hover:scale-105'>
@@ -20,6 +20,11 @@ function Navbar() {
 				<li className='p-2 hover:text-dark-purple/50 transition hover:-translate-y-1 hover:scale-105'>
 					<NavLink to='/'>
 						<FaHome size={30} />
+					</NavLink>
+				</li>
+				<li className='p-2 hover:text-dark-purple/50 transition hover:-translate-y-1 hover:scale-105'>
+					<NavLink to='/donation'>
+						<FaDonate size={30} />
 					</NavLink>
 				</li>
 				<li className='p-2 hover:text-dark-purple/50 transition hover:-translate-y-1 hover:scale-105'>

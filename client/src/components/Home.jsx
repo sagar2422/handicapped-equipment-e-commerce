@@ -21,13 +21,13 @@ function Home() {
 						<Link to='/explore'>
 							<Button content='Explore' color={true} />
 						</Link>
-						<Link to='/donate'>
+						<Link to='/donation'>
 							<Button content='Donate' color={true} />
 						</Link>
 					</div>
 				</div>
 				<div>
-					<img src='hero.svg' alt='Hero' className='' />
+					<img src='hero.svg' alt='Hero'/>
 				</div>
 			</div>
 		</>
