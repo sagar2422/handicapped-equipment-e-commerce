@@ -6,7 +6,7 @@ function DonationCard({ heading, description, image, progress }) {
 		<div className='transition bg-white/50 m-10 rounded-lg min-w-fit hover:-translate-y-1 '>
 			<div className='grid grid-cols-2 p-4'>
 				<div>
-					<img src={image} alt='' />
+					<img src={image} alt='person' className='w-[35rem] rounded-md' />
 				</div>
 				<div>
 					<h1>{heading}</h1>
@@ -16,7 +16,8 @@ function DonationCard({ heading, description, image, progress }) {
 						<span>{progress}</span>
 						<div className='w-full bg-dark-purple rounded-full h-2.5 '>
 							<div
-								className={`bg-light-purple h-2.5 rounded-full w-[${progress}]`}
+							style={{width:progress}}
+								className={`bg-light-purple h-2.5 rounded-full `}
 							></div>
 						</div>
 						<Button content='Donate' color={true} />
