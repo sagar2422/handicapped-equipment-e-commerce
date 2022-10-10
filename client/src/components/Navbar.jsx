@@ -5,7 +5,7 @@ import {MdOutlineExplore} from 'react-icons/md';
 
 function Navbar() {
 	return (
-		<nav className='flex flex-col md:flex-row justify-between px-6 py-6 md:px-10  '>
+		<nav className='flex flex-col md:flex-row justify-between font-bold px-6 py-6 md:px-10 '>
 			<h1 className='font-bold flex items-center transition hover:-translate-y-1 hover:scale-105 hover:text-dark-purple'>
 				<Link to='/'>MedUnit</Link>
 			</h1>
@@ -18,34 +18,40 @@ function Navbar() {
 						placeholder='Search'
 					/>
 				</li>
-				<li className='p-2 hover:text-dark-purple/50 transition hover:-translate-y-1 hover:scale-105'>
-					<NavLink to='/'>
-						<FaHome size={30} />
+				<li className=' p-2 hover:text-dark-purple/50 transition hover:-translate-y-1 hover:scale-105'>
+					<NavLink to='/' className='flex gap-2'>
+						<FaHome size={20} />
+						Home
+					</NavLink>
+				</li>
+				<li className=' p-2 hover:text-dark-purple/50 transition hover:-translate-y-1 hover:scale-105'>
+					<NavLink to='/explore' className='flex gap-2'>
+						<MdOutlineExplore size={20} />
+						Explore
 					</NavLink>
 				</li>
 				<li className='p-2 hover:text-dark-purple/50 transition hover:-translate-y-1 hover:scale-105'>
-					<NavLink to='/explore'>
-						<MdOutlineExplore size={30} />
+					<NavLink to='/donation' className='flex gap-2'>
+						<FaDonate size={20} />
+						Donate
 					</NavLink>
 				</li>
 				<li className='p-2 hover:text-dark-purple/50 transition hover:-translate-y-1 hover:scale-105'>
-					<NavLink to='/donation'>
-						<FaDonate size={30} />
+					<NavLink to='/user' className='flex gap-2'>
+						<FaRegUser size={20} />
+						User
 					</NavLink>
 				</li>
 				<li className='p-2 hover:text-dark-purple/50 transition hover:-translate-y-1 hover:scale-105'>
-					<NavLink to='/user'>
-						<FaRegUser size={30} />
+					<NavLink to='/wishlist' className='flex gap-2'>
+						<FaRegHeart size={20} />
+						Wishlist
 					</NavLink>
 				</li>
 				<li className='p-2 hover:text-dark-purple/50 transition hover:-translate-y-1 hover:scale-105'>
-					<NavLink to='/wishlist'>
-						<FaRegHeart size={30} />
-					</NavLink>
-				</li>
-				<li className='p-2 hover:text-dark-purple/50 transition hover:-translate-y-1 hover:scale-105'>
-					<NavLink to='/bag'>
-						<FaShoppingBag size={30} />
+					<NavLink to='/bag' className='flex gap-2'>
+						<FaShoppingBag size={20} />
+						Bag
 					</NavLink>
 				</li>
 			</ul>

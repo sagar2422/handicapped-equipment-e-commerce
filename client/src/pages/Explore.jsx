@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaHandPaper } from 'react-icons/fa';
-import Card from './Card';
+import Card from '../components/Card';
 import categories from '../temp/categories.json';
 import products from '../temp/products.json';
 

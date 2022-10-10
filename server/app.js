@@ -1,15 +1,28 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
-const products = require('./routes/products');
+const mongoose = require('mongoose');
+
+const productRoutes = require('./routes/products');
+const authRoutes = require('./routes/auth');
 
 const app = express();
-app.use(express.json());
 
+//MIDDLEWARE
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(cors());
 
-app.use(products);
+mongoose.connect(process.env.MONGO_DB, ()=> {
+    console.log('connected to db!')
+});
 
-const PORT = process.env.PORT;
+//ROUTES
+app.use('/api/user',authRoutes);
+app.use(productRoutes);
+
+const PORT = process.env.PORT || 6000;
 
 app.listen(PORT, ()=> {
     console.log(`Server is running on http://localhost:${PORT}`);

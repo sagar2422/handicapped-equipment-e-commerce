@@ -1,15 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
+import Home from './pages/Home';
 import Navbar from './components/Navbar';
-import Explore from './components/Explore';
+import Explore from './pages/Explore';
 import Product from './components/Product.jsx';
-import Login from './components/Login';
-import CreateAccount from './components/CreateAccount';
-import PageNotFound from './components/PageNotFound.jsx';
-import User from './components/User';
-import Wishlist from './components/Wishlist';
-import Bag from './components/Bag';
-import Donation from './components/Donation';
+import Login from './pages/Login';
+import CreateAccount from './pages/CreateAccount';
+import PageNotFound from './pages/PageNotFound.jsx';
+import User from './pages/User';
+import Wishlist from './pages/Wishlist';
+import Bag from './pages/Bag';
+import Donation from './pages/Donation';
 
 function App() {
 	return (

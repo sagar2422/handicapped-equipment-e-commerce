@@ -1,5 +1,5 @@
 import React from 'react';
-import DonationCard from './DonationCard';
+import DonationCard from '../components/DonationCard';
 import donations from '../temp/donation.json';
 
 function Donation() {

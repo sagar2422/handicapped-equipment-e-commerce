@@ -1,12 +1,11 @@
-function getProduct() {
-    const json = [
+function getProduct(req,res) {
+    const json =
         {
             'name': 'dhfhfhf',
             'price': '123'
         }
-    ]
 
-    return json;
+    res.send(json);
 }
 
 module.exports = getProduct

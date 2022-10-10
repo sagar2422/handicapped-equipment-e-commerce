@@ -6,14 +6,16 @@
   "scripts": {
     "start": "node app.js",
     "server": "nodemon app.js",
-    "client": "cd ../client && npm start"
+    "client": "cd ../client && npm run dev"
   },
   "author": "Sanket Patil",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.2",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mongoose": "^6.6.3"
   },
   "devDependencies": {
     "eslint": "^8.23.0",
