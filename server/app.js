@@ -10,21 +10,22 @@ const authRoutes = require('./routes/auth');
 const app = express();
 
 //MIDDLEWARE
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
-mongoose.connect(process.env.MONGO_DB, ()=> {
-    console.log('connected to db!')
+mongoose.connect(process.env.MONGO_DB, () => {
+	console.log('connected to db!');
 });
 
+
 //ROUTES
-app.use('/api/user',authRoutes);
-app.use(productRoutes);
+app.use('/api/user', authRoutes);
+app.use('/products',productRoutes);
 
 const PORT = process.env.PORT || 6000;
 
-app.listen(PORT, ()=> {
-    console.log(`Server is running on http://localhost:${PORT}`);
-}
-)
+
+app.listen(PORT, () => {
+	console.log(`Server is running on http://localhost:${PORT}`);
+});

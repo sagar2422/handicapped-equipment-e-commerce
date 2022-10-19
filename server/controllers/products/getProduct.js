@@ -1,5 +1,6 @@
+
 function getProduct(req,res) {
-    const json =
+    const json = 
         {
             'name': 'dhfhfhf',
             'price': '123'
@@ -8,4 +9,4 @@ function getProduct(req,res) {
     res.send(json);
 }
 
-module.exports = getProduct
+module.exports = getProduct;
