@@ -12,6 +12,7 @@ import Bag from './pages/Bag';
 import Donation from './pages/Donation';
 
 function App() {
+	const user = localStorage.getItem('token');
 	return (
 		<div className='bg-light-purple font-sans min-h-[100vh] '>
 			<Navbar />
@@ -19,10 +20,10 @@ function App() {
 				<Route path='/' element={<Home />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/signup' element={<CreateAccount />} />
-				<Route path='/user' element={<User />} />
+				{user && <Route path='/user' element={<User />} />}
 				<Route path='/donation' element={<Donation />} />
-				<Route path='/wishlist' element={<Wishlist />} />
-				<Route path='/bag' element={<Bag />} />
+				{user && <Route path='/wishlist' element={<Wishlist />} />}
+				{user && <Route path='/bag' element={<Bag />} />}
 				<Route path='/explore' element={<Explore />} />
 				<Route path='/explore/:id' element={<Product/>} />
 				<Route path='*' element={<PageNotFound />} />
