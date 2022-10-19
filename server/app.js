@@ -4,6 +4,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
+const dbConnection = require('./db') // loads our connection to the mongo database
+const passport = require('./passport');
 const productRoutes = require('./routes/products');
 const authRoutes = require('./routes/auth');
 
@@ -14,9 +18,19 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
 
-mongoose.connect(process.env.MONGO_DB, ()=> {
-    console.log('connected to db!')
-});
+app.use(
+	session({
+		secret: process.env.APP_SECRET ,
+		store: new MongoStore({ mongooseConnection: dbConnection }),
+		resave: false,
+		saveUninitialized: false
+	})
+)
+
+// ===== Passport ====
+app.use(passport.initialize())
+app.use(passport.session()) // will call the deserializeUser
+
 
 //ROUTES
 app.use('/api/user',authRoutes);
