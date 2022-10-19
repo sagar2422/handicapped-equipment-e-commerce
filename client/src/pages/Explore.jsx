@@ -1,10 +1,25 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { FaHandPaper } from 'react-icons/fa';
 import Card from '../components/Card';
 import categories from '../temp/categories.json';
-import products from '../temp/products.json';
+//import products from '../temp/products.json';
 
 function Explore() {
+	const [products, setProducts] = useState([]);
+	useEffect(() => {
+		axios.get('http://localhost:3000/products').then((response) => {
+			console.log(response);
+			setProducts(response.data);
+		});
+	}, []);
+	function arrayBufferToBase64(buffer) {
+		var binary = '';
+		var bytes = [].slice.call(new Uint8Array(buffer));
+		bytes.forEach((b) => (binary += String.fromCharCode(b)));
+		return window.btoa(binary);
+		console.log(binary)
+	}
 	return (
 		<>
 			<div className='md:mx-24 mx-10'>
@@ -24,15 +39,15 @@ function Explore() {
 				</div>
 			</div>
 			<div className='md:mx-20 grid sm:grid-cols-2 md:grid-cols-3'>
-				{products.products.map((product) => {
+				{products.map((product) => {
 					return (
 						<Card
-							key={product.id}
+							key={product._id}
 							id={product.id}
 							name={product.name}
 							description={product.description}
 							price={product.price}
-							image={product.image}
+							image={arrayBufferToBase64(product.image.data.data)}
 						/>
 					);
 				})}
