@@ -1,12 +1,9 @@
+const Product = require('../../models/Product');
 
-function getProduct(req,res) {
-    const json = 
-        {
-            'name': 'dhfhfhf',
-            'price': '123'
-        }
+async function getProduct(req, res) {
+	const json = await Product.find();
 
-    res.send(json);
+	res.json(json);
 }
 
 module.exports = getProduct;
