@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 const passwordComplexity = require('joi-password-complexity');
-const jwt = require('jsonwebtoken');
+const Product = require('./Product');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -17,19 +17,18 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
+        // select: false,
         max: 1024,
         min: 6
+    },
+    cart: {
+        type: [{type: Product.productSchema}] 
     },
     date: {
         type: Date,
         default: Date.now
     }
 });
-
-userSchema.methods.generateAuthToken = () => {
-    const token = jwt.sign({_id: this._id},process.env.JWT_PRIVATE_KEY, {expiresIn:'7d'})
-    return token;
-}
 
 const User = mongoose.model('User',userSchema);
 

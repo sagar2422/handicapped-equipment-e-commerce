@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 
 const Product = require('../models/Product');
+const getProducts = require('../controllers/products/getProducts');
 const getProduct = require('../controllers/products/getProduct');
 const postProduct = require('../controllers/products/postProduct');
 
@@ -20,7 +21,8 @@ const upload = multer({
 	storage: storage,
 });
 
-router.get('/', getProduct);
+router.get('/', getProducts);
+router.post('/product', getProduct);
 
 router.post('/',upload.single('image'), postProduct);
 

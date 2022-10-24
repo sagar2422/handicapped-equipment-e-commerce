@@ -1,14 +1,15 @@
 const express = require('express');
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20');
+// const passport = require('passport');
+// const GoogleStrategy = require('passport-google-oauth20');
 
 const register = require('../controllers/auth/register');
-const login = require('../controllers/auth/login')
-
+const login = require('../controllers/auth/login');
+const getUser = require('../controllers/auth/getUser');
 const router = express.Router();
 
 router.post('/register', register);
-router.post('/auth/login',login)
+router.post('/auth/login',login);
+router.post('/userData',getUser);
 module.exports = router;
 
 // passport.use(
