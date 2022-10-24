@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Card({ name, description, price, id, image }) {
-
-
+function Card({ name, description, price, _id, image }) {
 	return (
 		<Link
-			to={`/explore/${id}`}
+			to={`/explore/${_id}`}
 			className='transition bg-white/50 m-10 rounded-lg min-w-fit hover:-translate-y-1 hover:scale-105'
 		>
 			<div>
-				<img src={`data:image/png;base64,${image}`} alt='product' className='rounded-t-md '/>
+				<img
+					src={`data:image/png;base64,${image}`}
+					alt='product'
+					className='rounded-t-md '
+				/>
 			</div>
 			<div className='p-4'>
 				<p className='text-xl'>Rs. {price}</p>
