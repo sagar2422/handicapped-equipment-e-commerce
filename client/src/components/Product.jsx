@@ -1,30 +1,66 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaRegHeart, FaShieldAlt } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 
 import Button from './Button';
-import products from '../temp/products.json';
+// import products from '../temp/products.json';
 
 function Product() {
 	const { id } = useParams();
-	const product = products.products.find(
-		(product) => parseInt(id) === product.id
-	);
+	const [product, setProduct] = useState({});
+	const navigate = useNavigate();
+	const [image, setImage] = useState();
+	useEffect(() => {
+		axios
+			.post('http://localhost:3000/products/product', {
+				id: id,
+			})
+			.then((data) => {
+				console.log(data.data[0]);
+				setProduct(data.data[0]);
+				const imgData = arrayBufferToBase64(product.image.data.data);
+				setImage(imgData);
+			});
+	}, []);
+	function arrayBufferToBase64(buffer) {
+		var binary = '';
+		var bytes = [].slice.call(new Uint8Array(buffer));
+		bytes.forEach((b) => (binary += String.fromCharCode(b)));
+		return window.btoa(binary);
+	}
+	function addToCart() {
+		const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
+		axios
+			.post('http://localhost:3000/api/user/cart/update', { id: token._id , productId: id })
+			.then((data) => {
+				navigate('/bag');
+			});
+	}
 	return (
 		<>
 			<div className='grid md:grid-cols-2'>
 				<div className='flex flex-col items-center justify-center'>
-					<img
-						className='rounded-md md:w-9/12'
-						src={product.image}
-						alt='product'
-					/>
-					<div className='m-4 grid grid-cols-2'>
-						<Button color={true} content='Add To Cart' />
-						<Button
-							color={false}
-							content='Start A Donation Campaign'
+					{image ? (
+						<img
+							className='rounded-md md:w-9/12'
+							src={`data:image/png;base64,${image}`}
+							alt='product'
 						/>
+					) : (
+						<div className='w-[500px] h-[500px] bg-white '></div>
+					)}
+					<div className='m-4 grid grid-cols-2'>
+						<div onClick={addToCart}>
+							<Button color={true} content='Add To Cart' />
+						</div>
+						<div>
+							<Button
+								color={false}
+								content='Start A Donation Campaign'
+							/>
+						</div>
 					</div>
 				</div>
 				<div className='my-4 mx-10'>
@@ -71,9 +107,7 @@ function Product() {
 					<div>
 						<h3 className='text-xl font-semibold'>About Item</h3>
 						<hr className='border-t-4 mt-2 text-dark-purple/50' />
-						<p className='text-grey p-4'>
-							{product.about}
-						</p>
+						<p className='text-grey p-4'>{product.description}</p>
 					</div>
 				</div>
 			</div>

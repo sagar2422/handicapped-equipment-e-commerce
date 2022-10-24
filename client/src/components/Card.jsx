@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Card({ name, description, price, _id, image }) {
+function Card({ name, description, price, id, image }) {
 	return (
 		<Link
-			to={`/explore/${_id}`}
+			to={`/explore/${id}`}
 			className='transition bg-white/50 m-10 rounded-lg min-w-fit hover:-translate-y-1 hover:scale-105'
 		>
-			<div>
+			<div className='rounded-t-md w-full h-[300px] bg-white flex items-center align-middle justify-center '>
 				<img
 					src={`data:image/png;base64,${image}`}
 					alt='product'
-					className='rounded-t-md '
+					className='rounded-t-md max-h-[300px] '
 				/>
 			</div>
 			<div className='p-4'>
