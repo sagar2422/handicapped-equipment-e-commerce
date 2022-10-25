@@ -33,7 +33,7 @@ function Product() {
 	function addToCart() {
 		const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
 		axios
-			.post('http://localhost:3000/api/user/cart/update', { id: token._id , productId: id })
+			.post('http://localhost:3000/api/user/cart/add', { id: token._id , productId: id })
 			.then((data) => {
 				navigate('/bag');
 			});

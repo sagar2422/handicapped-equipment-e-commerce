@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
         min: 6
     },
     cart: {
-        type: [{type: Product.productSchema}] 
+        type: [{type: Product.productSchema , unique:true}] 
     },
     date: {
         type: Date,

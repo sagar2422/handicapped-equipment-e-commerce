@@ -1,6 +1,6 @@
 const { User } = require('../../models/User');
 const { Product } = require('../../models/Product');
-async function updateCart(req, res) {
+async function addItem(req, res) {
 	const { id, productId } = req.body;
 	try {
         const product = await Product.find({_id:productId});
@@ -15,4 +15,4 @@ async function updateCart(req, res) {
 	}
 }
 
-module.exports = updateCart;
+module.exports = addItem;
