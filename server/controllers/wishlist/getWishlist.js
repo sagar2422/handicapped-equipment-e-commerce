@@ -1,6 +1,6 @@
 const {User} = require('../../models/User');
 
-async function getCart(req,res) {
+async function getWishlist(req,res) {
     const id = req.body.id;
 
     try {
@@ -9,8 +9,8 @@ async function getCart(req,res) {
         res.status(200).json(user);
     } catch (error) {
         console.log(error);
-        res.status(404).json({error:'Error finding cart items'});
+        res.status(404).json({error:'Error finding wishlist items'});
     }
 }
 
-module.exports = getCart;
+module.exports = getWishlist

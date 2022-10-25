@@ -8,16 +8,16 @@ function Card({ name, description, price, id, image }) {
 			className='transition bg-white/50 m-10 rounded-lg min-w-fit hover:-translate-y-1 hover:scale-105'
 		>
 			<div className='rounded-t-md w-full h-[300px] bg-white flex items-center align-middle justify-center '>
-				<img
+				{/* <img
 					src={`data:image/png;base64,${image}`}
 					alt='product'
 					className='rounded-t-md max-h-[300px] '
-				/>
+				/> */}
 			</div>
 			<div className='p-4'>
 				<p className='text-xl'>Rs. {price}</p>
 				<h2>{name}</h2>
-				<p className='text-grey'>{description}</p>
+				<p className='text-grey'>{`${description.slice(0,50)}...`}</p>
 				<div className='flex py-2'>
 					<img src='/star.svg' alt='star' />
 					<img src='/star.svg' alt='star' />

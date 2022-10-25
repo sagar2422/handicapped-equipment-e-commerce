@@ -26,7 +26,7 @@ function User() {
 			<div className=''>
 				<p className='capitalize'>Name: {user.name} </p>
 				<p>Email: {user.email} </p>
-				<p>Account Create at : {new Date(user.date).toUTCString()} </p>
+				<p>Account Created at : {new Date(user.date).toUTCString()} </p>
 				<p>User ID: {user._id}</p>
 			</div>
 			<div onClick={logout}>

@@ -24,6 +24,9 @@ const userSchema = new mongoose.Schema({
     cart: {
         type: [{type: Product.productSchema , unique:true}] 
     },
+    wishlist: {
+        type: [{type: Product.productSchema , unique:true}] 
+    },
     date: {
         type: Date,
         default: Date.now

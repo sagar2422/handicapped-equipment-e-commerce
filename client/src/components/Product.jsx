@@ -9,6 +9,7 @@ import Button from './Button';
 
 function Product() {
 	const { id } = useParams();
+	const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
 	const [product, setProduct] = useState({});
 	const navigate = useNavigate();
 	const [image, setImage] = useState();
@@ -31,11 +32,23 @@ function Product() {
 		return window.btoa(binary);
 	}
 	function addToCart() {
-		const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
 		axios
-			.post('http://localhost:3000/api/user/cart/add', { id: token._id , productId: id })
+			.post('http://localhost:3000/api/user/cart/add', {
+				id: token._id,
+				productId: id,
+			})
 			.then((data) => {
-				navigate('/bag');
+				navigate('/cart');
+			});
+	}
+	function addToWishlist() {
+		axios
+			.post('http://localhost:3000/api/user/wishlist/add', {
+				id: token._id,
+				productId: id,
+			})
+			.then((data) => {
+				navigate('/wishlist');
 			});
 	}
 	return (
@@ -55,18 +68,14 @@ function Product() {
 						<div onClick={addToCart}>
 							<Button color={true} content='Add To Cart' />
 						</div>
-						<div>
-							<Button
-								color={false}
-								content='Start A Donation Campaign'
-							/>
+						<div onClick={addToWishlist}>
+							<Button color={false} content='Add to Wishlist' />
 						</div>
 					</div>
 				</div>
 				<div className='my-4 mx-10'>
 					<div className='flex flex-row justify-between '>
 						<h1>{product.name}</h1>
-						<FaRegHeart className='text-dark-purple' size={40} />
 					</div>
 					<hr className='border-t-4 mt-2 text-dark-purple/50' />
 					<div className='flex flex-row justify-between items-center my-4'>

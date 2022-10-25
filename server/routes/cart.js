@@ -6,9 +6,9 @@ const deleteItem = require('../controllers/cart/deleteItem');
 
 const router = express.Router();
 
-router.post('/cart',getCart);
-router.post('/cart/add',addItem);
-router.post('/cart/delete',deleteItem);
+router.post('/',getCart);
+router.post('/add',addItem);
+router.post('/delete',deleteItem);
 
 module.exports = router;
 

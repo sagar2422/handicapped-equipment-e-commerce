@@ -10,6 +10,7 @@ const productRoutes = require('./routes/products');
 const authRoutes = require('./routes/auth');
 const paymentRoutes = require('./routes/payment');
 const cartRoutes = require('./routes/cart');
+const wishlistRoutes = require('./routes/wishlist');
 const app = express();
 
 //MIDDLEWARE
@@ -31,7 +32,8 @@ mongoose.connect(process.env.MONGO_DB, () => {
 app.use('/api/user', authRoutes);
 app.use('/products', productRoutes);
 app.use('/api/payment',paymentRoutes)
-app.use('/api/user',cartRoutes);
+app.use('/api/user/cart',cartRoutes);
+app.use('/api/user/wishlist',wishlistRoutes);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

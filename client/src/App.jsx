@@ -8,7 +8,7 @@ import CreateAccount from './pages/CreateAccount';
 import PageNotFound from './pages/PageNotFound.jsx';
 import User from './pages/User';
 import Wishlist from './pages/Wishlist';
-import Bag from './pages/Bag';
+import Cart from './pages/Cart';
 import Donation from './pages/Donation';
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
 				<Route path='/user' element={user ? <User />: <Navigate to='/login'/>} /> 
 				<Route path='/donation' element={<Donation />} />
 				<Route path='/wishlist' element={user ? <Wishlist />: <Navigate to='/login'/>}  />
-				<Route path='/bag' element={user ? <Bag />: <Navigate to='/login'/>}  />
+				<Route path='/cart' element={user ? <Cart />: <Navigate to='/login'/>}  />
 				<Route path='/explore' element={<Explore />} />
 				<Route path='/explore/:id' element={<Product/>} />
 				<Route path='*' element={<PageNotFound />} />

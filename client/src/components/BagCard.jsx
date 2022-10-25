@@ -1,9 +1,7 @@
 import axios from 'axios';
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
 
 function BagCard({ id, name, price, image }) {
-	const navigate = useNavigate();
 	const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
 	async function removeItem() {
 		await axios.post('http://localhost:3000/api/user/cart/delete',{id:token._id,productId:id})

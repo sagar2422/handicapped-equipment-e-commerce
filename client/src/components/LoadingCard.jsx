@@ -12,7 +12,7 @@ export const LoadingCard = () => {
 export const LoadingPosts = () => {
 	const loadPages = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 	return (
-		<div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 content-start m-10 md:m-40'>
+		<div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 content-start m-10 md:mx-40 my-20'>
 			{loadPages.map((num) => {
 				return <LoadingCard key={num} />;
 			})}
