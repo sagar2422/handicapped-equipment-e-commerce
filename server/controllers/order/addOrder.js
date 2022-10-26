@@ -1,5 +1,5 @@
 const { Order } = require('../../models/Order');
-const {User} = require('../../models/User');
+const { User } = require('../../models/User');
 async function addOrder(req, res) {
 	const { id, productIds } = req.body;
 	try {
@@ -9,8 +9,6 @@ async function addOrder(req, res) {
 		});
 
 		await order.save();
-		const user = User.findOne({_id:id});
-		
 		res.status(200).json(order);
 	} catch (error) {
 		console.log(error);
