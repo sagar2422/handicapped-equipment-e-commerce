@@ -5,8 +5,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import Card from '../components/Card';
 import useLazyLoad from '../hooks/useLazyLoad';
 import { LoadingPosts } from '../components/LoadingCard';
-//import products from '../temp/products.json';
-// import categories from '../temp/categories.json';
+
 
 function Explore() {
 	const [products, setProducts] = useState([]);
@@ -19,25 +18,18 @@ function Explore() {
 			setProducts(response.data);
 		});
 	}, []);
-	const NUM_PER_PAGE = 6;
-	const TOTAL_PAGES = products.length;
-	const onGrabData = (currentPage) => {
-		return new Promise((resolve) => {
-			const data2 = products.slice(
-				((currentPage - 1) % TOTAL_PAGES) * NUM_PER_PAGE,
-				NUM_PER_PAGE * (currentPage % TOTAL_PAGES)
-			);
-			resolve(data2);
-		});
-	};
-	const { data, loading } = useLazyLoad({ triggerRef, onGrabData });
-	function arrayBufferToBase64(buffer) {
-		var binary = '';
-		var bytes = [].slice.call(new Uint8Array(buffer));
-		bytes.forEach((b) => (binary += String.fromCharCode(b)));
-		return window.btoa(binary);
-		// console.log(binary)
-	}
+	// const NUM_PER_PAGE = 6;
+	// const TOTAL_PAGES = products.length;
+	// const onGrabData = (currentPage) => {
+	// 	return new Promise((resolve) => {
+	// 		const data2 = products.slice(
+	// 			((currentPage - 1) % TOTAL_PAGES) * NUM_PER_PAGE,
+	// 			NUM_PER_PAGE * (currentPage % TOTAL_PAGES)
+	// 		);
+	// 		resolve(data2);
+	// 	});
+	// };
+	// const { data, loading } = useLazyLoad({ triggerRef, onGrabData });
 
 	return (
 		<>
@@ -64,7 +56,7 @@ function Explore() {
 				</div>
 			</div>
 			<div className='md:mx-20 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3'>
-				{data
+				{products
 					.filter((product) => {
 						if (search === '') {
 							return product;
@@ -87,17 +79,17 @@ function Explore() {
 								name={product.name}
 								description={product.description}
 								price={product.price}
-								// image={arrayBufferToBase64(product.image.data.data)}
+								image={product.image}
 							/>
 						);
 					})}
 			</div>
-			<div
+			{/* <div
 				ref={triggerRef}
 				className={clsx('trigger', { visible: loading })}
 			>
 				<LoadingPosts />
-			</div>
+			</div> */}
 		</>
 	);
 }

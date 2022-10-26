@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { FaGoogle } from 'react-icons/fa';
 
@@ -8,7 +8,6 @@ function Login() {
 		email: '',
 		password: ''
 	});
-	const navigate = useNavigate();
 	function handleChange({currentTarget: input}) {
 		setData({...data,[input.name]:[input.value]});
 		console.log(data);
@@ -26,7 +25,8 @@ function Login() {
 			console.log(res.messsage);
 
 			localStorage.setItem('token',res.data);
-			navigate('/');
+			window.location.href = "/";
+			
 		} catch(err) {
 			console.log(err);
 		}

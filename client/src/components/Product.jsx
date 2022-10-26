@@ -12,7 +12,6 @@ function Product() {
 	const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
 	const [product, setProduct] = useState({});
 	const navigate = useNavigate();
-	const [image, setImage] = useState();
 	useEffect(() => {
 		axios
 			.post('http://localhost:3000/products/product', {
@@ -21,16 +20,9 @@ function Product() {
 			.then((data) => {
 				console.log(data.data[0]);
 				setProduct(data.data[0]);
-				const imgData = arrayBufferToBase64(product.image.data.data);
-				setImage(imgData);
 			});
 	}, []);
-	function arrayBufferToBase64(buffer) {
-		var binary = '';
-		var bytes = [].slice.call(new Uint8Array(buffer));
-		bytes.forEach((b) => (binary += String.fromCharCode(b)));
-		return window.btoa(binary);
-	}
+
 	function addToCart() {
 		axios
 			.post('http://localhost:3000/api/user/cart/add', {
@@ -55,10 +47,10 @@ function Product() {
 		<>
 			<div className='grid md:grid-cols-2'>
 				<div className='flex flex-col items-center justify-center'>
-					{image ? (
+					{product.image ? (
 						<img
 							className='rounded-md md:w-9/12'
-							src={`data:image/png;base64,${image}`}
+							src={`${import.meta.env.VITE_PROXY}/${product.image}`}
 							alt='product'
 						/>
 					) : (

@@ -11,6 +11,8 @@ const authRoutes = require('./routes/auth');
 const paymentRoutes = require('./routes/payment');
 const cartRoutes = require('./routes/cart');
 const wishlistRoutes = require('./routes/wishlist');
+const orderRoutes = require('./routes/order');
+
 const app = express();
 
 //MIDDLEWARE
@@ -34,7 +36,22 @@ app.use('/products', productRoutes);
 app.use('/api/payment',paymentRoutes)
 app.use('/api/user/cart',cartRoutes);
 app.use('/api/user/wishlist',wishlistRoutes);
+app.use('/api/user/orders',orderRoutes);
+
+// DON'T UNCOMMENT DB GOES BOOM
+// app.get('/abc',async function(req,res) {
+// 	try {
+// 		const user = await Product.updateMany({},{$set : {image : {}}})
+// 		res.send('success');
+// 	} catch (error) {
+// 		console.log(error);
+// 		res.json({ error: error });
+// 	}
+// })
+
 const PORT = process.env.PORT || 3000;
+
+
 
 app.listen(PORT, () => {
 	console.log(`Server is running on http://localhost:${PORT}`);

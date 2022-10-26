@@ -12,16 +12,16 @@ import { MdOutlineExplore, MdMenu } from 'react-icons/md';
 
 function Navbar() {
 	const [navbarOpen, setNavbarOpen] = useState(false);
-	const [user,setUser]=  useState({});
-	useEffect(()=> {
-	const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
+	// const [user,setUser]=  useState({});
+	// useEffect(()=> {
+	// const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
 
-		axios
-			.post('http://localhost:3000/api/user/userData', { id: token._id })
-			.then((data) => {
-				setUser(data.data[0]);
-			});
-	},[])
+	// 	axios
+	// 		.post('http://localhost:3000/api/user/userData', { id: token._id })
+	// 		.then((data) => {
+	// 			setUser(data.data[0]);
+	// 		});
+	// },[])
 	return (
 		<nav className='transition-all relative flex flex-wrap items-center justify-between p-4  mb-3 text-dark-purple'>
 			<div className='container px-4 mx-auto flex flex-wrap items-center justify-between'>
@@ -96,7 +96,7 @@ function Navbar() {
 								to='/user'
 							>
 								<FaRegUser size={20} />
-								<span className='capitalize'>{user != {} ? user.name : User}</span>
+								<span className='capitalize'> User</span>
 							</NavLink>
 						</li>
 					</ul>

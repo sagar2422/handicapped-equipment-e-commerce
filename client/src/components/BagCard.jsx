@@ -14,7 +14,7 @@ function BagCard({ id, name, price, image }) {
 	return (
 			<div className='flex flex-col md:flex-row md:justify-between md:p-4 m-4 p-2 bg-white rounded-md shadow-md'>
 				<img
-					src={image}
+					src={`${import.meta.env.VITE_PROXY}/${image}`}
 					alt='product'
 					className='rounded-t-md max-w-[300px] '
 				/>

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 const passwordComplexity = require('joi-password-complexity');
-const Product = require('./Product');
+const {productSchema} = require('./Product');
+const {orderSchema} = require('./Order');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -22,16 +23,12 @@ const userSchema = new mongoose.Schema({
         min: 6
     },
     cart: {
-        type: [{type: Product.productSchema , unique:true}] 
+        type: [{type: productSchema , unique:true}] 
     },
     wishlist: {
-        type: [{type: Product.productSchema , unique:true}] 
-    },
-    date: {
-        type: Date,
-        default: Date.now
+        type: [{type: productSchema , unique:true}] 
     }
-});
+},{timestamps:true});
 
 const User = mongoose.model('User',userSchema);
 

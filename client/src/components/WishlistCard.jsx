@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import {Link , useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function WishlistCard({ id, name, price, image }) {
 	const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
@@ -16,7 +16,7 @@ function WishlistCard({ id, name, price, image }) {
 				window.location.reload();
 			});
 	}
-	
+
 	async function addToCart() {
 		const token = JSON.parse(
 			atob(localStorage.getItem('token').split('.')[1])
@@ -33,11 +33,13 @@ function WishlistCard({ id, name, price, image }) {
 
 	return (
 		<div className='flex flex-col md:p-10 m-4 p-2 bg-white rounded-md shadow-md'>
-			<img
-				src={image}
-				alt='product'
-				className='rounded-t-md max-w-[300px] '
-			/>
+			<div className='w-full flex items-center justify-center align-middle'>
+				<img
+					src={`${import.meta.env.VITE_PROXY}/${image}`}
+					alt='product'
+					className='rounded-t-md max-w-[300px] '
+				/>
+			</div>
 			<div className='flex flex-col justify-center text-left'>
 				<Link to={`/explore/${id}`}>
 					<h2>{name}</h2>

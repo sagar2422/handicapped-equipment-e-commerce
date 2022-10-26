@@ -1,22 +1,24 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import BagCard from '../components/BagCard';
 import Button from '../components/Button';
 function Cart() {
 	const [items, setItems] = useState([]);
-	const [total, setTotal] = useState(200);
+	const [total, setTotal] = useState(0);
+	const navigate = useNavigate();
 	const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
 	useEffect(() => {
 		axios
 			.post('http://localhost:3000/api/user/cart', { id: token._id })
 			.then((data) => {
-				console.log(data.data[0].cart);
+				console.log(data.data[0]);
 				setItems(data.data[0].cart);
+				data.data[0].cart.forEach((item) => {
+					console.log(total, item.price);
+					setTotal((prevValue) => prevValue + parseInt(item.price));
+				});
 			});
-		// items.forEach(((item)=>{
-		// 	console.log(total)
-		// 	setTotal((prevValue)=> prevValue+parseInt(item.price))
-		// }))
 	}, []);
 	const initPayment = (data) => {
 		const options = {
@@ -67,12 +69,19 @@ function Cart() {
 		});
 		rzp1.open();
 	};
-	const handlePayment = async () => {
+	const handleBuy = async () => {
 		try {
 			const orderURL = 'http://localhost:3000/api/payment/order';
 			const { data } = await axios.post(orderURL, { amount: total });
+			const itemIds = items.map((item) => item._id);
+			console.log(itemIds);
+			const createOrder = await axios.post(
+				'http://localhost:3000/api/user/orders/add',
+				{ id: token._id, productIds: itemIds }
+			);
 			console.log(data);
 			initPayment(data.data);
+			navigate('/user');
 		} catch (error) {
 			console.log(error);
 		}
@@ -98,7 +107,7 @@ function Cart() {
 					<div className='text-4xl font-bold px-20'>
 						Total
 						<p>{total}</p>
-						<div onClick={handlePayment}>
+						<div onClick={handleBuy}>
 							<Button content='Buy Now' />
 						</div>
 					</div>
