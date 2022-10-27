@@ -1,11 +1,12 @@
 const { Order } = require('../../models/Order');
 const { User } = require('../../models/User');
 async function addOrder(req, res) {
-	const { id, productIds } = req.body;
+	const { id, productIds,address } = req.body;
 	try {
 		const order = new Order({
 			products: productIds,
 			userId: id,
+			address: address
 		});
 
 		await order.save();

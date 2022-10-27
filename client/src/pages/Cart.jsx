@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import BagCard from '../components/BagCard';
 import Button from '../components/Button';
 function Cart() {
 	const [items, setItems] = useState([]);
+	const [address,setAddress] = useState('');
 	const [total, setTotal] = useState(0);
 	const navigate = useNavigate();
 	const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
@@ -50,9 +51,9 @@ function Cart() {
 			// 	email: 'gaurav.kumar@example.com',
 			// 	contact: '9999999999',
 			// },
-			notes: {
-				address: 'Razorpay Corporate Office',
-			},
+			// notes: {
+			// 	address: 'Razorpay Corporate Office',
+			// },
 			theme: {
 				color: '#3399cc',
 			},
@@ -69,7 +70,8 @@ function Cart() {
 		});
 		rzp1.open();
 	};
-	const handleBuy = async () => {
+	const handleBuy = async (e) => {
+		e.preventDefault();
 		try {
 			const orderURL = 'http://localhost:3000/api/payment/order';
 			const { data } = await axios.post(orderURL, { amount: total });
@@ -77,7 +79,7 @@ function Cart() {
 			console.log(itemIds);
 			const createOrder = await axios.post(
 				'http://localhost:3000/api/user/orders/add',
-				{ id: token._id, productIds: itemIds }
+				{ id: token._id, productIds: itemIds, address:address }
 			);
 			console.log(data);
 			initPayment(data.data);
@@ -107,9 +109,23 @@ function Cart() {
 					<div className='text-4xl font-bold px-20'>
 						Total
 						<p>{total}</p>
-						<div onClick={handleBuy}>
+						<form onSubmit={handleBuy}>
+							<div className='flex flex-col'>
+							<label htmlFor='address' className='text-dark-purple text-sm m-4'>Address</label>
+							<textarea
+								type='text'
+								id='address'
+								className='h-40 w-80 text-sm align-top p-4 whitespace-normal font-normal'
+								placeholder='Address'
+								value={address}
+								required
+								onChange={(input)=>{
+									setAddress(input.target.value)
+								}}
+							/>
+							</div>
 							<Button content='Buy Now' />
-						</div>
+						</form>
 					</div>
 				</div>
 			) : (

@@ -12,6 +12,7 @@ const paymentRoutes = require('./routes/payment');
 const cartRoutes = require('./routes/cart');
 const wishlistRoutes = require('./routes/wishlist');
 const orderRoutes = require('./routes/order');
+const campaignRoutes = require('./routes/campaign');
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use('/api/payment',paymentRoutes)
 app.use('/api/user/cart',cartRoutes);
 app.use('/api/user/wishlist',wishlistRoutes);
 app.use('/api/user/orders',orderRoutes);
+app.use('/api/campaigns',campaignRoutes);
 
 // DON'T UNCOMMENT DB GOES BOOM
 // app.get('/abc',async function(req,res) {

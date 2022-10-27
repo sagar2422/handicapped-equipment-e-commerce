@@ -49,7 +49,7 @@ function Product() {
 				<div className='flex flex-col items-center justify-center'>
 					{product.image ? (
 						<img
-							className='rounded-md md:w-9/12'
+							className='rounded-md max-w-[500px] max-h-[500px] '
 							src={`${import.meta.env.VITE_PROXY}/${product.image}`}
 							alt='product'
 						/>
@@ -83,7 +83,7 @@ function Product() {
 									warranty
 								</p>
 							</div>
-							<div className='flex flex-col justify-center items-center mx-2'>
+							{/* <div className='flex flex-col justify-center items-center mx-2'>
 								<FaShieldAlt
 									className='text-dark-purple'
 									size={30}
@@ -102,7 +102,7 @@ function Product() {
 									1 year <br />
 									warranty
 								</p>
-							</div>
+							</div> */}
 						</div>
 					</div>
 					<div>
@@ -112,7 +112,9 @@ function Product() {
 					</div>
 				</div>
 			</div>
-			<div className='mx-10 py-4'>
+			<hr className='border-t-4 mt-2 text-dark-purple/50' />
+
+			{/* <div className='mx-10 py-4'>
 				<h2>Customer Reviews</h2>
 				<hr className='border-t-4 mt-2 text-dark-purple/50' />
 				<div className='flex py-2 items-center '>
@@ -126,7 +128,7 @@ function Product() {
 				<div>
 					<p className='text-xl px-2'>100,342 reviews</p>
 				</div>
-			</div>
+			</div> */}
 		</>
 	);
 }

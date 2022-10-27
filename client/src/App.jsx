@@ -10,6 +10,7 @@ import User from './pages/User';
 import Wishlist from './pages/Wishlist';
 import Cart from './pages/Cart';
 import Donation from './pages/Donation';
+import DonationPage from './pages/DonationPage';
 
 function App() {
 	const user = localStorage.getItem('token');
@@ -22,6 +23,7 @@ function App() {
 				<Route path='/signup' element={<CreateAccount />} />
 				<Route path='/user' element={user ? <User />: <Navigate to='/login'/>} /> 
 				<Route path='/donation' element={<Donation />} />
+				<Route path='/donation/:id' element={<DonationPage/>} />
 				<Route path='/wishlist' element={user ? <Wishlist />: <Navigate to='/login'/>}  />
 				<Route path='/cart' element={user ? <Cart />: <Navigate to='/login'/>}  />
 				<Route path='/explore' element={<Explore />} />

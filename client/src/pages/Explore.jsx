@@ -13,7 +13,7 @@ function Explore() {
 	const searchInput = useRef();
 	const triggerRef = useRef(null);
 	useEffect(() => {
-		axios.get('http://localhost:3000/products').then((response) => {
+		axios.get(`${import.meta.env.VITE_PROXY}/products`).then((response) => {
 			console.log(response);
 			setProducts(response.data);
 		});

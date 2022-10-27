@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { productSchema } = require('./Product');
+
 const orderSchema = new mongoose.Schema({
 	userId: {
 		type: String,
@@ -8,7 +8,14 @@ const orderSchema = new mongoose.Schema({
 	},
 	products: {
         type: Array
-    }
+    },
+	total: {
+		type: Number
+	},
+	address: {
+		type: String,
+		required: true
+	}
 },{timestamps:true});
 
 const Order = mongoose.model('Order', orderSchema,'orders');

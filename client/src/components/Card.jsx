@@ -19,13 +19,13 @@ function Card({ name, description, price, id, image }) {
 				<p className='text-xl'>Rs. {price}</p>
 				<h2>{name}</h2>
 				<p className='text-grey'>{`${description.slice(0,50)}...`}</p>
-				<div className='flex py-2'>
+				{/* <div className='flex py-2'>
 					<img src='/star.svg' alt='star' />
 					<img src='/star.svg' alt='star' />
 					<img src='/star.svg' alt='star' />
 					<img src='/star.svg' alt='star' />
 					<img src='/star.svg' alt='star' />
-				</div>
+				</div> */}
 			</div>
 		</Link>
 	);

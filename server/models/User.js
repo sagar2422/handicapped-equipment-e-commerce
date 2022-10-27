@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     },
     wishlist: {
         type: [{type: productSchema , unique:true}] 
-    }
+    },
 },{timestamps:true});
 
 const User = mongoose.model('User',userSchema);

@@ -11,7 +11,7 @@ async function convertProducts(orders) {
 						return product;
 					})
 				)
-				return {products:response,createdAt:order.createdAt,_id:order._id};
+				return {products:response,createdAt:order.createdAt,_id:order._id,address:order.address};
 			}
 		)
 	);
