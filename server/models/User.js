@@ -28,6 +28,10 @@ const userSchema = new mongoose.Schema({
     wishlist: {
         type: [{type: productSchema , unique:true}] 
     },
+    admin: {
+        type: Boolean,
+        default: false
+    }
 },{timestamps:true});
 
 const User = mongoose.model('User',userSchema);

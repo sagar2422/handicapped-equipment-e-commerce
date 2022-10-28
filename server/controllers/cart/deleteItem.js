@@ -10,7 +10,7 @@ async function deleteItem(req, res) {
         res.send(user)
 	} catch (error) {
 		console.log(error);
-        res.json({error:error})
+        res.json(error)
 	}
 }
 

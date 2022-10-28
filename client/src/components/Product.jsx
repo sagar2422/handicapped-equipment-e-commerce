@@ -30,6 +30,7 @@ function Product() {
 				productId: id,
 			})
 			.then((data) => {
+				console.log(data)
 				navigate('/cart');
 			});
 	}

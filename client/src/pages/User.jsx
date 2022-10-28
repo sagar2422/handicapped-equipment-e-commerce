@@ -39,7 +39,9 @@ function User() {
 				<p>Email: {user.email} </p>
 				<p>
 					Account Created at :{' '}
-					{new Date(user.createdAt).toUTCString()}{' '}
+					{new Date(user.createdAt).toLocaleString('en-us', {
+					timeZone: 'Asia/Kolkata',
+				})} IST
 				</p>
 				<p>User ID: {user._id}</p>
 			</div>

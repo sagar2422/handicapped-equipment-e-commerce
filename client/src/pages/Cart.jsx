@@ -13,7 +13,7 @@ function Cart() {
 		axios
 			.post('http://localhost:3000/api/user/cart', { id: token._id })
 			.then((data) => {
-				console.log(data.data[0]);
+				console.log(data.data);
 				setItems(data.data[0].cart);
 				data.data[0].cart.forEach((item) => {
 					console.log(total, item.price);

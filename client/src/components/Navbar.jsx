@@ -1,4 +1,4 @@
-import React, { useEffect , useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { NavLink, Link } from 'react-router-dom';
 import {
@@ -8,20 +8,21 @@ import {
 	FaHome,
 	FaDonate,
 } from 'react-icons/fa';
+import {FiUsers} from 'react-icons/fi'
 import { MdOutlineExplore, MdMenu } from 'react-icons/md';
 
 function Navbar() {
 	const [navbarOpen, setNavbarOpen] = useState(false);
-	// const [user,setUser]=  useState({});
-	// useEffect(()=> {
-	// const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
+	const [admin, setAdmin] = useState(false);
+	const token = localStorage.getItem('token');
+	useEffect(() => {
+		if (token) {
+			const user = JSON.parse(atob(token.split('.')[1]));
+			console.log(user);
+			setAdmin(user.admin);
+		}
+	}, []);
 
-	// 	axios
-	// 		.post('http://localhost:3000/api/user/userData', { id: token._id })
-	// 		.then((data) => {
-	// 			setUser(data.data[0]);
-	// 		});
-	// },[])
 	return (
 		<nav className='transition-all relative flex flex-wrap items-center justify-between p-4  mb-3 text-dark-purple'>
 			<div className='container px-4 mx-auto flex flex-wrap items-center justify-between'>
@@ -45,60 +46,105 @@ function Navbar() {
 					id='example-navbar-danger'
 				>
 					<ul className='flex flex-col lg:flex-row list-none lg:ml-auto'>
-						<li className='nav-item'>
-							<NavLink
-								className='px-3 py-2 flex items-center font-bold align-middle gap-2  hover:scale-105'
-								to='/'
-							>
-								<FaHome size={20} />
-								Home
-							</NavLink>
-						</li>
-						<li className='nav-item'>
-							<NavLink
-								className='px-3 py-2 flex items-center font-bold align-middle gap-2  hover:scale-105'
-								to='/explore'
-							>
-								<MdOutlineExplore size={20} />
-								Explore
-							</NavLink>
-						</li>
-						<li className='nav-item'>
-							<NavLink
-								className='px-3 py-2 flex items-center align-middle gap-2 font-bold  hover:scale-105'
-								to='/donation'
-							>
-								<FaDonate size={20} />
-								Donate
-							</NavLink>
-						</li>
-						<li className='nav-item'>
-							<NavLink
-								className='px-3 py-2 flex items-center align-middle gap-2 font-bold  hover:scale-105'
-								to='/wishlist'
-							>
-								<FaRegHeart size={20} />
-								Wishlist
-							</NavLink>
-						</li>
-						<li className='nav-item'>
-							<NavLink
-								className='px-3 py-2 flex items-center align-middle gap-2 font-bold  hover:scale-105'
-								to='/cart'
-							>
-								<FaShoppingBag size={20} />
-								Cart
-							</NavLink>
-						</li>
-						<li className='nav-item'>
-							<NavLink
-								className='px-3 py-2 flex items-center align-middle gap-2 font-bold  hover:scale-105'
-								to='/user'
-							>
-								<FaRegUser size={20} />
-								<span className='capitalize'> User</span>
-							</NavLink>
-						</li>
+						{admin ? (
+							<>
+							<li className='nav-item'>
+									<NavLink
+										className='px-3 py-2 flex items-center font-bold align-middle gap-2  hover:scale-105'
+										to='/admin/'
+									>
+										<FaHome size={20} />
+										Home
+									</NavLink>
+								</li>
+								<li className='nav-item'>
+									<NavLink
+										className='px-3 py-2 flex items-center font-bold align-middle gap-2  hover:scale-105'
+										to='/admin/users'
+									>
+										<FiUsers size={20} />
+										Users
+									</NavLink>
+								</li>
+								<li className='nav-item'>
+									<NavLink
+										className='px-3 py-2 flex items-center font-bold align-middle gap-2  hover:scale-105'
+										to='/admin/orders'
+									>
+										<FaShoppingBag size={20} />
+										Orders
+									</NavLink>
+								</li>
+								<li className='nav-item'>
+									<NavLink
+										className='px-3 py-2 flex items-center font-bold align-middle gap-2  hover:scale-105'
+										to='/admin/profile'
+									>
+										<FaRegUser size={20} />
+										Profile
+									</NavLink>
+								</li>
+							</>
+						) : (
+							<>
+								<li className='nav-item'>
+									<NavLink
+										className='px-3 py-2 flex items-center font-bold align-middle gap-2  hover:scale-105'
+										to='/'
+									>
+										<FaHome size={20} />
+										Home
+									</NavLink>
+								</li>
+								<li className='nav-item'>
+									<NavLink
+										className='px-3 py-2 flex items-center font-bold align-middle gap-2  hover:scale-105'
+										to='/explore'
+									>
+										<MdOutlineExplore size={20} />
+										Explore
+									</NavLink>
+								</li>
+								<li className='nav-item'>
+									<NavLink
+										className='px-3 py-2 flex items-center align-middle gap-2 font-bold  hover:scale-105'
+										to='/donation'
+									>
+										<FaDonate size={20} />
+										Donate
+									</NavLink>
+								</li>
+								<li className='nav-item'>
+									<NavLink
+										className='px-3 py-2 flex items-center align-middle gap-2 font-bold  hover:scale-105'
+										to='/wishlist'
+									>
+										<FaRegHeart size={20} />
+										Wishlist
+									</NavLink>
+								</li>
+								<li className='nav-item'>
+									<NavLink
+										className='px-3 py-2 flex items-center align-middle gap-2 font-bold  hover:scale-105'
+										to='/cart'
+									>
+										<FaShoppingBag size={20} />
+										Cart
+									</NavLink>
+								</li>
+								<li className='nav-item'>
+									<NavLink
+										className='px-3 py-2 flex items-center align-middle gap-2 font-bold  hover:scale-105'
+										to='/user'
+									>
+										<FaRegUser size={20} />
+										<span className='capitalize'>
+											Profile
+										</span>
+									</NavLink>
+								</li>
+							</>
+						)}
 					</ul>
 				</div>
 			</div>

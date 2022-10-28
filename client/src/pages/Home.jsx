@@ -11,11 +11,10 @@ function Home() {
 						Get Your Medical Aids Online!
 					</h1>
 					<h3 className='text-md  md:w-5/12 py-2 text-grey'>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Sed mollis, odio eget hendrerit convallis, odio leo
-						fringilla risus, eget pretium dolor urna eu mi. odio
-						eget hendrerit convallis, odio leo fringilla risus, eget
-						pretium dolor urna eu mi.
+						Equipment for people with disabilities Having the right
+						equipment and aids can be important to independent
+						living. Some may be related to a particular health need,
+						others to assist you with particular tasks.
 					</h3>
 					<div className='py-2'>
 						<Link to='/explore'>
@@ -27,7 +26,7 @@ function Home() {
 					</div>
 				</div>
 				<div>
-					<img src='hero.svg' alt='Hero'/>
+					<img src='hero.svg' alt='Hero' />
 				</div>
 			</div>
 		</>
