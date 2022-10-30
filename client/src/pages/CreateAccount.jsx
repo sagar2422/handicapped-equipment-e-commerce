@@ -20,7 +20,7 @@ function CreateAccount() {
 	async function handleSubmit(e) {
 		e.preventDefault();
 		try{
-			const url = 'http://localhost:3000/api/user/register/';
+			const url = `${import.meta.env.VITE_PROXY}/api/user/register/`;
 			const {data: res} = await axios.post(url,{
 				name:data.name[0],
 				email:data.email[0],

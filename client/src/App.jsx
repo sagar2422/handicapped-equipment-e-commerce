@@ -18,6 +18,7 @@ import Orders from './pages/AdminDashboard/Orders';
 import AdminUser from './pages/AdminDashboard/User';
 import AdminOrder from './pages/AdminDashboard/Order';
 import AdminProfile from './pages/AdminDashboard/Profile';
+import CreateDonation from './pages/CreateDonation';
 
 function App() {
 	const token = localStorage.getItem('token');
@@ -31,6 +32,7 @@ function App() {
 				<Route path='/signup' element={<CreateAccount />} />
 				<Route path='/user' element={token ? <User />: <Navigate to='/login'/>} /> 
 				<Route path='/donation' element={<Donation />} />
+				<Route path='/donation/create/:id' element={<CreateDonation />} />
 				<Route path='/donation/:id' element={<DonationPage/>} />
 				<Route path='/wishlist' element={token ? <Wishlist />: <Navigate to='/login'/>}  />
 				<Route path='/cart' element={token ? <Cart />: <Navigate to='/login'/>}  />

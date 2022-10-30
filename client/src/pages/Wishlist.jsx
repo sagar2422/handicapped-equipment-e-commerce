@@ -7,7 +7,7 @@ function Wishlist() {
 	const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
 	useEffect(() => {
 		axios
-			.post('http://localhost:3000/api/user/wishlist', { id: token._id })
+			.post(`${import.meta.env.VITE_PROXY}/api/user/wishlist`, { id: token._id })
 			.then((data) => {
 				console.log(data.data[0].wishlist);
 				setItems(data.data[0].wishlist);

@@ -4,7 +4,7 @@ import React from 'react';
 function BagCard({ id, name, price, image }) {
 	const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
 	async function removeItem() {
-		await axios.post('http://localhost:3000/api/user/cart/delete',{id:token._id,productId:id})
+		await axios.post(`${import.meta.env.VITE_PROXY}/api/user/cart/delete`,{id:token._id,productId:id})
 			.then((data)=> {
 				console.log(data);
 				window.location.reload();

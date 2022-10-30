@@ -7,7 +7,7 @@ function WishlistCard({ id, name, price, image }) {
 	const navigate = useNavigate();
 	async function removeItem() {
 		await axios
-			.post('http://localhost:3000/api/user/wishlist/delete', {
+			.post(`${import.meta.env.VITE_PROXY}/api/user/wishlist/delete`, {
 				id: token._id,
 				productId: id,
 			})
@@ -22,7 +22,7 @@ function WishlistCard({ id, name, price, image }) {
 			atob(localStorage.getItem('token').split('.')[1])
 		);
 		await axios
-			.post('http://localhost:3000/api/user/cart/add', {
+			.post(`${import.meta.env.VITE_PROXY}/api/user/cart/add`, {
 				id: token._id,
 				productId: id,
 			})

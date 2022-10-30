@@ -17,7 +17,7 @@ function Login() {
 	async function handleSubmit(e) {
 		e.preventDefault();
 		try {
-			const url = 'http://localhost:3000/api/user/auth/login/';
+			const url = `${import.meta.env.VITE_PROXY}/api/user/auth/login/`;
 			const { data: res } = await axios.post(url, {
 				email: data.email[0],
 				password: data.password[0],

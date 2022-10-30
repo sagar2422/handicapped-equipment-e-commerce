@@ -11,7 +11,7 @@ function Cart() {
 	const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
 	useEffect(() => {
 		axios
-			.post('http://localhost:3000/api/user/cart', { id: token._id })
+			.post(`${import.meta.env.VITE_PROXY}/api/user/cart`, { id: token._id })
 			.then((data) => {
 				console.log(data.data);
 				setItems(data.data[0].cart);
@@ -31,7 +31,7 @@ function Cart() {
 			handler: async (response) => {
 				try {
 					const verifyUrl =
-						'http://localhost:3000/api/payment/paymentVerify';
+						`${import.meta.env.VITE_PROXY}/api/payment/paymentVerify`;
 					const { data } = await axios.post(verifyUrl, response);
 					console.log(data);
 					alert(data.message);
@@ -73,12 +73,12 @@ function Cart() {
 	const handleBuy = async (e) => {
 		e.preventDefault();
 		try {
-			const orderURL = 'http://localhost:3000/api/payment/order';
+			const orderURL = `${import.meta.env.VITE_PROXY}/api/payment/order`;
 			const { data } = await axios.post(orderURL, { amount: total });
 			const itemIds = items.map((item) => item._id);
 			console.log(itemIds);
 			const createOrder = await axios.post(
-				'http://localhost:3000/api/user/orders/add',
+				`${import.meta.env.VITE_PROXY}/api/user/orders/add`,
 				{ id: token._id, productIds: itemIds, address:address }
 			);
 			console.log(data);

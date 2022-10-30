@@ -83,7 +83,7 @@ function DonationPage() {
 			setError('Please enter valid amount');
 		} else {
             try {
-				const orderURL = 'http://localhost:3000/api/payment/order';
+				const orderURL = `${import.meta.env.VITE_PROXY}/api/payment/order`;
 				const { data } = await axios.post(orderURL, { amount: amount });
 				initPayment(data.data);
 			} catch (error) {

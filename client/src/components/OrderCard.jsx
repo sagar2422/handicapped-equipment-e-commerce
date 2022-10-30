@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function OrderCard({ products, id, createdAt, address }) {
 	console.log(products);
 	return (
-		<div className=' bg-white p-4 m-4 rounded-md shadow-md'>
+		<div className=' bg-white m-2 p-4 rounded-md shadow-md'>
 			<div>
 				<h2>OrderId #{id}</h2>
 				<p>Address: {address}</p>
@@ -16,7 +16,7 @@ function OrderCard({ products, id, createdAt, address }) {
 					IST
 				</p>
 			</div>
-			<div className='m-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 '>
+			<div className='m-4 grid grid-cols-1 md:grid-cols-2 gap-4 '>
 				{products.map((product) => {
 					return (
 						<Link
@@ -28,12 +28,12 @@ function OrderCard({ products, id, createdAt, address }) {
 								src={`${import.meta.env.VITE_PROXY}/${
 									product.image
 								}`}
-								className='max-w-[200px] max-h-[200px] rounded-md'
+								className='max-w-[150px] max-h-[150px] rounded-md'
 								alt=''
 							/>
 							<div>
 								<p className=''>
-									{product.name.slice(0, 50)}...
+									{product.name.slice(0, 30)}...
 								</p>
 								<p className='font-bold text-2xl'>
 									Rs {product.price}

@@ -9,12 +9,17 @@ import Button from './Button';
 
 function Product() {
 	const { id } = useParams();
-	const token = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
+	const token = localStorage.getItem('token');
+	const [user, setUser] = useState();
 	const [product, setProduct] = useState({});
 	const navigate = useNavigate();
 	useEffect(() => {
+		if (token) {
+			const user = JSON.parse(atob(token.split('.')[1]));
+			setUser(user);
+		}
 		axios
-			.post('http://localhost:3000/products/product', {
+			.post(`${import.meta.env.VITE_PROXY}/products/product`, {
 				id: id,
 			})
 			.then((data) => {
@@ -25,24 +30,30 @@ function Product() {
 
 	function addToCart() {
 		axios
-			.post('http://localhost:3000/api/user/cart/add', {
-				id: token._id,
+			.post(`${import.meta.env.VITE_PROXY}/api/user/cart/add`, {
+				id: user._id,
 				productId: id,
 			})
 			.then((data) => {
-				console.log(data)
+				console.log(data);
 				navigate('/cart');
 			});
 	}
 	function addToWishlist() {
 		axios
-			.post('http://localhost:3000/api/user/wishlist/add', {
-				id: token._id,
+			.post(`${import.meta.env.VITE_PROXY}/api/user/wishlist/add`, {
+				id: user._id,
 				productId: id,
 			})
 			.then((data) => {
 				navigate('/wishlist');
 			});
+	}
+	function navigateToLogin() {
+		navigate('/login');
+	}
+	function startDonationCampaign() {
+		navigate(`/donation/create/${product._id}`);
 	}
 	return (
 		<>
@@ -51,18 +62,35 @@ function Product() {
 					{product.image ? (
 						<img
 							className='rounded-md max-w-[500px] max-h-[500px] '
-							src={`${import.meta.env.VITE_PROXY}/${product.image}`}
+							src={`${import.meta.env.VITE_PROXY}/${
+								product.image
+							}`}
 							alt='product'
 						/>
 					) : (
 						<div className='w-[500px] h-[500px] bg-white '></div>
 					)}
 					<div className='m-4 grid grid-cols-2'>
-						<div onClick={addToCart}>
-							<Button color={true} content='Add To Cart' />
+						<div
+							className=' col-span-2 w-full '
+							onClick={token ? addToCart : navigateToLogin}
+						>
+							<button className='bg-dark-purple w-full text-white hover:bg-white/0 hover:border-dark-purple hover:border-2 hover:text-dark-purple transition font-bold px-8 py-4 rounded-md'>
+								Add to Cart
+							</button>
 						</div>
-						<div onClick={addToWishlist}>
+						<div onClick={token ? addToWishlist : navigateToLogin}>
 							<Button color={false} content='Add to Wishlist' />
+						</div>
+						<div
+							onClick={
+								token ? startDonationCampaign : navigateToLogin
+							}
+						>
+							<Button
+								color={false}
+								content='Start an Donation Campaign'
+							/>
 						</div>
 					</div>
 				</div>
