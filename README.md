@@ -5,14 +5,12 @@
 * [Omkar Gole](https://github.com/Omkargole06)
 * [Sagar Chavan](https://github.com/sagar2422)
 
-### ENV File for server -
-MONGO_DB=""
 
-JWT_PRIVATE_KEY=""
+### ENV File for Server -
+    MONGO_DB=""
+    JWT_PRIVATE_KEY=""
+    RAZORPAY_KEY_ID=""
+    RAZORPAY_KEY_SECRET=""
 
-RAZORPAY_KEY_ID=""
-
-RAZORPAY_KEY_SECRET=""
-
-### ENV File for client -
-VITE_PROXY="" //Server Address with port
+### ENV File for Client -
+    VITE_PROXY="" //Server Address with port
