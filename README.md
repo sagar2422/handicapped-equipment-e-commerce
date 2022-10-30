@@ -7,6 +7,12 @@
 
 ### ENV File for server -
 MONGO_DB=""
+
 JWT_PRIVATE_KEY=""
+
 RAZORPAY_KEY_ID=""
+
 RAZORPAY_KEY_SECRET=""
+
+### ENV File for client -
+VITE_PROXY="" //Server Address with port
