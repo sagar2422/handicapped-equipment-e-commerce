@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { IoMdClose } from 'react-icons/io';
 
 function DonationPage() {
@@ -9,7 +9,7 @@ function DonationPage() {
 	const [product, setProduct] = useState({});
 	const [amount, setAmount] = useState(0);
 	const [error, setError] = useState('');
-
+	const navigate = useNavigate();
 	useEffect(() => {
 		axios
 			.post(`${import.meta.env.VITE_PROXY}/api/campaigns/campaign`, {
@@ -38,8 +38,18 @@ function DonationPage() {
 			handler: async (response) => {
 				try {
 					const verifyUrl =
-						'http://localhost:3000/api/payment/paymentVerify';
-					const { data } = await axios.post(verifyUrl, response);
+						`${import.meta.env.VITE_PROXY}/api/payment/paymentVerify`;
+					const { data } = await axios.post(verifyUrl, response)
+					.then(()=> {
+						
+						axios.post(`${import.meta.env.VITE_PROXY}/api/campaigns/update`,
+						{
+							completedAmount:parseInt(amount)+parseInt(campaign.completedAmount),
+							id:campaign._id
+						}).then(
+							window.location.href=`/donation/${campaign._id}`
+						)
+					})
 					console.log(data);
 					alert(data.message);
 				} catch (error) {
@@ -79,16 +89,20 @@ function DonationPage() {
 	};
 	const handleBuy = async (e) => {
 		e.preventDefault();
-		if (parseInt(e.target.value) > parseInt(campaign.total) - parseInt(campaign.completedAmount)) {
-			setError('Please enter valid amount');
-		} else {
-            try {
+		const difference = parseInt(campaign.total) - parseInt(campaign.completedAmount);
+		console.log(difference);
+		console.log(amount);
+		if (difference>=amount && amount !== 0) {
+			try {
 				const orderURL = `${import.meta.env.VITE_PROXY}/api/payment/order`;
 				const { data } = await axios.post(orderURL, { amount: amount });
 				initPayment(data.data);
 			} catch (error) {
 				console.log(error);
 			}
+		} else {
+			setError('Please enter valid amount');
+            
 		}
 	};
 	return (
